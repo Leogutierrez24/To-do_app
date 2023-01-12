@@ -1,0 +1,53 @@
+.taskContainer {
+    min-width: 330px;
+    height: 60px;
+    padding: 10px 0;
+    margin-bottom: 16px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    background-color: #7f5a83;
+    background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+    display: flex;
+}
+
+.taskContent__left, .taskContent__right {
+    width: 25%;
+}
+
+.taskContent__middle {
+    width: 50%;
+}
+
+.taskContent__left, .taskContent__middle, .taskContent__right {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkButton, .deleteButton {
+    border: none;
+    cursor: pointer;
+}
+
+.taskDescription {
+    align-self: center;
+}
+
+.checkButton {
+    width: 25px;
+    height: 25px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteButton {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

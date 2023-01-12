@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { TodoCounter } from "./components/TodoCounter";
+import { TodoSearch } from "./components/TodoSearch";
+import { TodoList } from "./components/TodoList";
+import { TodoItem } from "./components/TodoItem";
+import { TodoAddButton } from "./components/TodoAddButton";
+import { TodoHeader } from "./components/TodoHeader";
+import { TodoHidden } from "./components/TodoHidden";
+
+const todos = [
+  {title: "Ganarle al campéon de América", status: false},
+  {title: "Ganarle al campéon de Europa ", status: false},
+  {title: "Ser campéon del mundo", status: false}
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>
+        <TodoHeader />
+        <TodoCounter />
+        <TodoSearch />
+        <TodoList>
+          {
+            todos.map((todo) => {
+              return <TodoItem key={todo.title} title={todo.title} />
+            })
+          }
+        </TodoList>
+        <TodoAddButton />
+      </div>
+      <div style={{height: "200px", display: "flex"}}>
+        <TodoHidden />
+      </div>
+    </>
   );
 }
 

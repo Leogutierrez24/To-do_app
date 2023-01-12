@@ -1,0 +1,9 @@
+.hidden-section {
+    width: 100%;
+    height: fit-content;
+    align-self: flex-end;
+}
+
+.hidden-title {
+    text-align: center;
+}

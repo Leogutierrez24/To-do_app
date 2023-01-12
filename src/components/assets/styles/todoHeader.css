@@ -1,0 +1,16 @@
+.top-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-bar__title {
+    letter-spacing: .8px;
+}
+
+.titleIcon {
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+    filter: invert(99%) sepia(4%) saturate(117%) hue-rotate(40deg) brightness(115%) contrast(89%);
+}

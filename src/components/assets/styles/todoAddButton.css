@@ -1,0 +1,18 @@
+.addTask-button {
+    width: 60px;
+    height: 60px;
+    background-color: #30ACE2;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 5px 4px 2px #0202027d;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    top: 80%
+}
+
+.addTask-icon {
+    width: 30px;
+    height: 30px;
+    filter: invert(99%) sepia(4%) saturate(117%) hue-rotate(40deg) brightness(115%) contrast(89%);
+}
