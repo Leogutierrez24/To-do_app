@@ -4,10 +4,18 @@ import deleteIcon from "./assets/icons/x.svg";
 import "./assets/styles/todoItem.css";
 
 export function TodoItem(props){
+    const handleCompleteTaskBtn = () => {
+        props.onComplete(props.title);
+    }
+
+    const handleDeleteTaskBtn = () => {
+        props.onDelete(props.title);
+    }
+
     return(
-        <li className="taskContainer">
+        <li className={`taskContainer ${!props.status ? "toComplete" : "completed"}`}>
             <div className="taskContent__left">
-                <button className="checkButton">
+                <button className="checkButton" onClick={handleCompleteTaskBtn}>
                     <img src={checkIcon} alt="" className="checkButton__icon" />
                 </button>
             </div>
@@ -15,7 +23,7 @@ export function TodoItem(props){
                 <p className="taskDescription">{props.title}</p>
             </div>
             <div className="taskContent__right">
-                <button className="deleteButton">
+                <button className="deleteButton" onClick={handleDeleteTaskBtn}>
                     <img src={deleteIcon} alt="" className="deleteButton__icon" />
                 </button>
             </div>
