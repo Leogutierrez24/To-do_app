@@ -1,8 +1,11 @@
 import React from "react";
+import { useTaskContext } from "./context/TaskContext";
 import searchIcon from "./assets/icons/search.svg";
 import "./assets/styles/todoSearch.css";
 
-export function TodoSearch({ taskValue, setTaskValue }){
+export function TodoSearch(){
+    const { taskValue, setTaskValue } = useTaskContext();
+
     const onSearchValueChange = (e) => {
         setTaskValue(e.target.value);
     }
