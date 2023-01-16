@@ -1,0 +1,6 @@
+.modal-container {
+    width: 300px;
+    display: flex;
+    position: absolute;
+    top: 20%;
+}

@@ -7,6 +7,7 @@ import { TodoAddButton } from "./TodoAddButton";
 import { TodoHeader } from "./TodoHeader";
 import { TodoHidden } from "./TodoHidden";
 import { useTaskContext } from "./context/TaskContext";
+import { Modal } from "./Modal";
 
 export function AppComponents(){
     const { error, loading, searchedTasks, completeTask, deleteTask } = useTaskContext();
@@ -38,6 +39,9 @@ export function AppComponents(){
         <div style={{height: "200px", display: "flex"}}>
           <TodoHidden />
         </div>
+        <Modal>
+          <p>Usando portales!!!!</p>
+        </Modal>
         </>
     );
 }
