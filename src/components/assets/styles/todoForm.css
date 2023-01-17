@@ -1,0 +1,48 @@
+.addTask-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.addTask-form > label {
+    margin-bottom: 5px;
+}
+
+.addTask-form__btn-area {
+    width: 250px;
+    display: inherit;
+    justify-content: space-around;
+}
+
+.addTask-form__btn-area > button {
+    margin-bottom: 10px;
+}
+
+#textInput {
+    width: 250px;
+    height: 100px;
+    margin-bottom: 5px;
+    border-radius: 1px;
+}
+
+#textInput:focus {
+    outline: 1px solid #fff;
+}
+
+.addTask-form__btn-cancel, .addTask-form__btn-add {
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    color: #F1F1F1;
+}
+
+.addTask-form__btn-add {
+    background-color: #03C988;
+}
+
+.addTask-form__btn-cancel {
+    background-color: #EB455F;
+}
+

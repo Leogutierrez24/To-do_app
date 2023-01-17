@@ -1,4 +1,5 @@
 import React from "react";
+import { useTaskContext } from "./context/TaskContext";
 import { TodoCounter } from "./TodoCounter";
 import { TodoSearch } from "./TodoSearch";
 import { TodoList } from "./TodoList";
@@ -6,11 +7,14 @@ import { TodoItem } from "./TodoItem";
 import { TodoAddButton } from "./TodoAddButton";
 import { TodoHeader } from "./TodoHeader";
 import { TodoHidden } from "./TodoHidden";
-import { useTaskContext } from "./context/TaskContext";
 import { Modal } from "./Modal";
+import { TodoForm } from "./TodoForm";
+import { EmptyComponent } from "./EmptyComponent";
+import { AddNewTodo } from "./AddNewTodo";
+import { Loader } from "./Loader";
 
 export function AppComponents(){
-    const { error, loading, searchedTasks, completeTask, deleteTask } = useTaskContext();
+    const { error, loading, taskValue, searchedTasks, completeTask, deleteTask, modalStatus } = useTaskContext();
 
     return(
         <>
@@ -20,8 +24,9 @@ export function AppComponents(){
           <TodoSearch />
           <TodoList>
             {error && <p>Ocurrio un error</p>}
-            {loading && <p>Cargando...</p>}
-            {(!loading && searchedTasks.length === 0) && <h2>Create a new task!!!</h2>}
+            {loading && <Loader />}
+            {(!loading && searchedTasks.length === 0 && taskValue === "") && <AddNewTodo />}
+            {(taskValue.length !== 0 && searchedTasks.length === 0) && <EmptyComponent />}
             {
               searchedTasks.map((todo) => {
                 return <TodoItem 
@@ -32,16 +37,20 @@ export function AppComponents(){
                           onDelete={deleteTask}
                         />
               })
-            }
+            }      
           </TodoList>
           <TodoAddButton />
         </div>
         <div style={{height: "200px", display: "flex"}}>
           <TodoHidden />
         </div>
-        <Modal>
-          <p>Usando portales!!!!</p>
-        </Modal>
+        {
+          modalStatus && <Modal>
+                          <div className="modal-content">
+                            <TodoForm />
+                          </div>
+                        </Modal>
+        }
         </>
     );
 }

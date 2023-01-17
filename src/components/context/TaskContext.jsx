@@ -7,7 +7,10 @@ export const useTaskContext = () => useContext(TaskContext);
 
 function TaskProvider({children}){
     const { item: tasks, saveItem: saveTasks, loading, error } = useLocalStorage("TASKS_V1", []);
+
     const [taskValue, setTaskValue] = useState("");
+
+    const [modalStatus, setModalStatus] = useState(false);
 
     const completedTasks = tasks.filter(task => !!task.status).length;
     const totalTasks = tasks.length;
@@ -18,11 +21,11 @@ function TaskProvider({children}){
         searchedTasks = tasks;
     } else {
         searchedTasks = tasks.filter(task => {
-        const taskText = task.title.toLocaleLowerCase();
-        const searchText = taskValue.toLocaleLowerCase();
-        
-        return taskText.includes(searchText);
-    });
+            const taskText = task.title.toLocaleLowerCase();
+            const searchText = taskValue.toLocaleLowerCase();
+            
+            return taskText.includes(searchText);
+        });
     }
 
     const completeTask = (title) => {
@@ -41,6 +44,20 @@ function TaskProvider({children}){
         saveTasks(updatedTasks);
     }
 
+    const addTask = (text) => {
+        let updatedTasks = [...tasks];
+
+        updatedTasks.unshift({
+            title: text,
+            status: false,
+        });
+
+        saveTasks(updatedTasks);
+    }
+
+    const handleModal = () => setModalStatus(prevState => !prevState);
+
+
     return(
         <TaskContext.Provider value={{
             totalTasks,
@@ -51,7 +68,10 @@ function TaskProvider({children}){
             loading,
             searchedTasks,
             completeTask,
-            deleteTask
+            deleteTask,
+            handleModal,
+            modalStatus,
+            addTask
         }}>
             {children}
         </TaskContext.Provider>

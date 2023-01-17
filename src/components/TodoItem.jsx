@@ -4,13 +4,9 @@ import deleteIcon from "./assets/icons/x.svg";
 import "./assets/styles/todoItem.css";
 
 export function TodoItem(props){
-    const handleCompleteTaskBtn = () => {
-        props.onComplete(props.title);
-    }
+    const handleCompleteTaskBtn = () => props.onComplete(props.title);
 
-    const handleDeleteTaskBtn = () => {
-        props.onDelete(props.title);
-    }
+    const handleDeleteTaskBtn = () => props.onDelete(props.title);
 
     return(
         <li className={`taskContainer ${!props.status ? "toComplete" : "completed"}`}>

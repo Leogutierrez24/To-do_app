@@ -37,6 +37,7 @@
     width: 25px;
     height: 25px;
     border-radius: 3px;
+    background-color: #03C988;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,6 +47,7 @@
     width: 18px;
     height: 18px;
     border-radius: 50%;
+    background-color: #EB455F;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,4 +60,8 @@
 .completed {
     box-shadow: inset 0 0 3px 0px #00000080;
     color: #ffffff80;
+}
+
+.checkButton__icon, .deleteButton__icon {
+    filter: invert(99%) sepia(4%) saturate(117%) hue-rotate(40deg) brightness(115%) contrast(89%);
 }

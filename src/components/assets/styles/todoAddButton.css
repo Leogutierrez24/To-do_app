@@ -8,11 +8,18 @@
     cursor: pointer;
     position: fixed;
     right: 20px;
-    top: 80%
+    top: 80%;
+    z-index: 15;
 }
 
 .addTask-icon {
     width: 30px;
     height: 30px;
     filter: invert(99%) sepia(4%) saturate(117%) hue-rotate(40deg) brightness(115%) contrast(89%);
+    transition: .2s ease-in-out;
+}
+
+.clicked {
+    transform: rotate(45deg);
+    transition: .2s ease-in-out;
 }

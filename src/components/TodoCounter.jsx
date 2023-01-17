@@ -6,6 +6,6 @@ export function TodoCounter(){
     const { totalTasks, completedTasks } = useTaskContext();
 
     return(
-        <h2 className="taskCounter__title">Van {completedTasks} de {totalTasks} tareas completas!!!</h2>
+        <h2 className="taskCounter__title">You have {completedTasks} of {totalTasks} task to complete!</h2>
     );
 }
