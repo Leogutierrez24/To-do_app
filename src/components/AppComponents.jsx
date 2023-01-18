@@ -30,7 +30,7 @@ export function AppComponents(){
             {
               searchedTasks.map((todo) => {
                 return <TodoItem 
-                          key={todo.title} 
+                          key={todo.id} 
                           title={todo.title}
                           status={todo.status}
                           onComplete={completeTask}
@@ -41,7 +41,7 @@ export function AppComponents(){
           </TodoList>
           <TodoAddButton />
         </div>
-        <div style={{height: "200px", display: "flex"}}>
+        <div style={{display: "flex"}}>
           <TodoHidden />
         </div>
         {

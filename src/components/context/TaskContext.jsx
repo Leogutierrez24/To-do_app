@@ -7,15 +7,18 @@ export const useTaskContext = () => useContext(TaskContext);
 
 function TaskProvider({children}){
     const { item: tasks, saveItem: saveTasks, loading, error } = useLocalStorage("TASKS_V1", []);
+    const { item: completedTask, saveItem: saveCompletedTask} = useLocalStorage("CMPTASKS_V1", []);
 
     const [taskValue, setTaskValue] = useState("");
 
     const [modalStatus, setModalStatus] = useState(false);
+    const [hiddenSection, setHiddenSection] = useState(false);
 
     const completedTasks = tasks.filter(task => !!task.status).length;
     const totalTasks = tasks.length;
 
     let searchedTasks = [];
+    let tasksCompleted = [...completedTask];
 
     if(taskValue.length <= 0){
         searchedTasks = tasks;
@@ -33,7 +36,10 @@ function TaskProvider({children}){
         const taskIndex = updatedTasks.findIndex(task => task.title === title);
 
         updatedTasks[taskIndex].status = true;
-        saveTasks(updatedTasks);
+        let taskCompleted = [...completedTask];
+        taskCompleted.push(updatedTasks[taskIndex]);
+        deleteTask(title);
+        saveCompletedTask(taskCompleted);
     }
 
     const deleteTask = (title) => {
@@ -50,13 +56,36 @@ function TaskProvider({children}){
         updatedTasks.unshift({
             title: text,
             status: false,
+            id: Date.now()
         });
 
         saveTasks(updatedTasks);
     }
 
+    const resetTask = (title) => {
+        let hiddenTasks = [...completedTask];
+        const taskIndex = hiddenTasks.findIndex(task => task.title === title);
+
+        hiddenTasks[taskIndex].status = false;
+        let updatedTasks = [...tasks];
+        updatedTasks.unshift(hiddenTasks[taskIndex]);
+
+        hiddenTasks.splice(taskIndex, 1);
+        saveTasks(updatedTasks);
+        saveCompletedTask(hiddenTasks);
+    }
+
+    const deleteCompletedTask = (title) => {
+        let hiddenTasks = [...completedTask];
+        const taskIndex = hiddenTasks.findIndex(task => task.title === title);
+
+        hiddenTasks.splice(taskIndex, 1);
+        saveCompletedTask(hiddenTasks);
+    }
+
     const handleModal = () => setModalStatus(prevState => !prevState);
 
+    const handleHiddenSection = () => setHiddenSection(prevState => !prevState);
 
     return(
         <TaskContext.Provider value={{
@@ -71,7 +100,12 @@ function TaskProvider({children}){
             deleteTask,
             handleModal,
             modalStatus,
-            addTask
+            addTask,
+            handleHiddenSection,
+            hiddenSection,
+            tasksCompleted,
+            resetTask,
+            deleteCompletedTask
         }}>
             {children}
         </TaskContext.Provider>

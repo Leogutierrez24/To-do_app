@@ -4,7 +4,7 @@
     background-color: #00000080;
     display: flex;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     top: 0;
 }
 
@@ -17,4 +17,5 @@
     display: flex;
     position: absolute;
     top: 20%;
+    transition: .5s ease-in-out;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import checkIcon from "./assets/icons/check-lg.svg";
 import deleteIcon from "./assets/icons/x.svg";
+import resetIcon from "./assets/icons/arrow-counterclockwise.svg";
 import "./assets/styles/todoItem.css";
 
 export function TodoItem(props){
@@ -12,7 +13,7 @@ export function TodoItem(props){
         <li className={`taskContainer ${!props.status ? "toComplete" : "completed"}`}>
             <div className="taskContent__left">
                 <button className="checkButton" onClick={handleCompleteTaskBtn}>
-                    <img src={checkIcon} alt="" className="checkButton__icon" />
+                    <img src={!props.status ? checkIcon : resetIcon } alt={!props.status ? "check icon" : "reset icon"} className="checkButton__icon" />
                 </button>
             </div>
             <div className="taskContent__middle">
@@ -20,7 +21,7 @@ export function TodoItem(props){
             </div>
             <div className="taskContent__right">
                 <button className="deleteButton" onClick={handleDeleteTaskBtn}>
-                    <img src={deleteIcon} alt="" className="deleteButton__icon" />
+                    <img src={deleteIcon} alt="delete icon" className="deleteButton__icon" />
                 </button>
             </div>
         </li>

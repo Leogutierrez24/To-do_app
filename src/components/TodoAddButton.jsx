@@ -7,8 +7,8 @@ export function TodoAddButton(){
     const { handleModal, modalStatus } = useTaskContext();
 
     return(
-        <button className="addTask-button">
-            <img src={addTask} alt="add task" className={!modalStatus ? "addTask-icon" : "addTask-icon clicked"} onClick={handleModal} />
+        <button className="addTask-button" onClick={handleModal}>
+            <img src={addTask} alt="add task" className={!modalStatus ? "addTask-icon" : "addTask-icon clicked"} />
         </button>
     );
 }

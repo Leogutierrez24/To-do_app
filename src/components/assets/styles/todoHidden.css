@@ -2,8 +2,21 @@
     width: 100%;
     height: fit-content;
     align-self: flex-end;
+    border: 1px solid #8d8d8d38;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.hidden-title {
+.hidden-button {
+    width: fit-content;
+    margin: 20px 0;
     text-align: center;
+    background-color: transparent;
+    border: none;
+    color: #F1F1F1;
+    letter-spacing: .3px;
+    cursor: pointer;
 }
