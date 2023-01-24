@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useTaskContext } from "./context/TaskContext";
 import "./assets/styles/todoForm.css";
 
-export function TodoForm(){
-    const { addTask, handleModal } = useTaskContext();
+export function TodoForm({ addTask, handleModal }){
     const [newTaskValue, setNewTaskValue] = useState("");
 
     const handleTextarea = (e) => setNewTaskValue(e.target.value);

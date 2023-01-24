@@ -1,5 +1,6 @@
 .hidden-section {
     width: 100%;
+    min-width: 330px;
     height: fit-content;
     align-self: flex-end;
     border: 1px solid #8d8d8d38;

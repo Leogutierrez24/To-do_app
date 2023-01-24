@@ -1,5 +1,12 @@
 .top-bar {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-bar_hero {
+    display: flex;
     justify-content: center;
     align-items: center;
 }

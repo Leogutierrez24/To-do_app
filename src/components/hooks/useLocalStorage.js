@@ -17,12 +17,12 @@ export const useLocalStorage = (itemName, initialValue) => {
                 } else parsedItem = JSON.parse(localStorageItem);
 
                 setItem(parsedItem);
-                setLoading(false);
+                setLoading(false);        
             } catch(error){
                 setError(error);
             }
         }, 1500);
-    });
+    }, []);
 
     const saveItem = (newItem) => {
         try{

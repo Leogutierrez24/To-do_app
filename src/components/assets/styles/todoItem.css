@@ -1,12 +1,16 @@
 .taskContainer {
+    width: 100%;
     min-width: 300px;
-    height: 60px;
+    height: fit-content;
+    min-height: 80px;
     padding: 10px 0;
     margin-bottom: 16px;
     border-radius: 10px;
     background-color: #7f5a83;
     background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .taskContent__left, .taskContent__right {
@@ -20,8 +24,18 @@
 .taskContent__left, .taskContent__middle, .taskContent__right {
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+}
+
+.taskContent__left {
+    padding-left: 20px;
+}
+
+.taskContent__middle { justify-content: center; }
+
+.taskContent__right { 
+    padding-right: 20px;
+    justify-content: end;
 }
 
 .taskContent__middle {
@@ -40,17 +54,18 @@
 
 .taskDescription {
     width: 180px;
-    max-height: 40px;
+    max-height: 60px;
     margin: 0;
     font-size: 14px;
     text-align: center;
     overflow: hidden;
     align-self: center;
+    transition: .2s ease-in-out;
 }
 
 .checkButton {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     border-radius: 3px;
     background-color: #03C988;
     display: flex;
@@ -59,8 +74,8 @@
 }
 
 .deleteButton {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background-color: #EB455F;
     display: flex;
@@ -80,4 +95,25 @@
 
 .checkButton__icon, .deleteButton__icon {
     filter: invert(99%) sepia(4%) saturate(117%) hue-rotate(40deg) brightness(115%) contrast(89%);
+}
+
+.checkButton__icon {
+    width: 22px;
+    height: 22px;
+}
+
+.deleteButton__icon {
+    width: 20px;
+    height: 20px;
+}
+
+.showContent {
+    max-height: fit-content;
+    transition: .2s ease-in-out;
+}
+
+@media all and (max-width: 360px){
+    .taskContainer {
+        max-width: 310px
+    }
 }

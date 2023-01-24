@@ -1,12 +1,8 @@
-import React, { createContext, useContext, useState } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useState } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
-const TaskContext = createContext();
-
-export const useTaskContext = () => useContext(TaskContext);
-
-function TaskProvider({children}){
-    const { item: tasks, saveItem: saveTasks, loading, error } = useLocalStorage("TASKS_V1", []);
+export function useTasks(){
+    const { item: tasks, saveItem: saveTasks, updateItem: updateTasks , loading, error } = useLocalStorage("TASKS_V1", []);
     const { item: completedTask, saveItem: saveCompletedTask} = useLocalStorage("CMPTASKS_V1", []);
 
     const [taskValue, setTaskValue] = useState("");
@@ -87,8 +83,7 @@ function TaskProvider({children}){
 
     const handleHiddenSection = () => setHiddenSection(prevState => !prevState);
 
-    return(
-        <TaskContext.Provider value={{
+    return {
             totalTasks,
             completedTasks,
             taskValue,
@@ -105,11 +100,7 @@ function TaskProvider({children}){
             hiddenSection,
             tasksCompleted,
             resetTask,
-            deleteCompletedTask
-        }}>
-            {children}
-        </TaskContext.Provider>
-    );
+            deleteCompletedTask,
+            updateTasks
+        };
 }
-
-export default TaskProvider;

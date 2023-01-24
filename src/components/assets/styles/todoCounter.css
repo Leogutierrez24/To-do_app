@@ -1,4 +1,13 @@
 .taskCounter__title {
+    width: 100%;
+    min-height: 70px;
+    margin-top: 0;
     text-align: center;
     letter-spacing: 1px;
+    border-radius: 3px;
+    transition: .2s ease-in-out;
+}
+
+.textLoading {
+    transition: .2s ease-in-out;
 }
