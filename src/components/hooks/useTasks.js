@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
 export function useTasks(){
-    const { item: tasks, saveItem: saveTasks, updateItem: updateTasks , loading, error } = useLocalStorage("TASKS_V1", []);
+    const { item: tasks, saveItem: saveTasks, loading, error } = useLocalStorage("TASKS_V1", []);
     const { item: completedTask, saveItem: saveCompletedTask} = useLocalStorage("CMPTASKS_V1", []);
 
     const [taskValue, setTaskValue] = useState("");
@@ -101,6 +101,5 @@ export function useTasks(){
             tasksCompleted,
             resetTask,
             deleteCompletedTask,
-            updateTasks
         };
 }

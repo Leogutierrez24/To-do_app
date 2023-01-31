@@ -1,4 +1,6 @@
 .top-bar {
+    max-height: 610px;
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,4 +29,17 @@
     width: 32px;
     height: 32px;
     filter: invert(99%) sepia(4%) saturate(117%) hue-rotate(40deg) brightness(115%) contrast(89%);
+}
+
+@media all and (min-width: 1024px) {
+    .top-bar {
+        width: 50%;
+        height: 70vh;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        display: inline-block;
+    }
+
+    .top-bar__title {
+        margin: 21px 0;
+    }
 }

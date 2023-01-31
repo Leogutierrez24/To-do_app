@@ -62,3 +62,15 @@
     background-color: #fff;
     opacity: 50%;
 }
+
+@media all and (min-width: 768px) {
+    .searchInput {
+        width: 400px;
+        height: 50px;
+    }
+
+    .searchIcon__container {
+        width: 40px;
+        height: 50px;
+    }
+}

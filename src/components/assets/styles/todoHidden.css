@@ -1,18 +1,21 @@
 .hidden-section {
     width: 100%;
     min-width: 330px;
-    height: fit-content;
+    max-width: 600px;
+    max-height: 610px;
+    padding: 8px;
     align-self: flex-end;
     border: 1px solid #8d8d8d38;
     border-radius: 16px;
+    overflow: auto;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
 .hidden-button {
     width: fit-content;
+    height: 20px;
     margin: 20px 0;
     text-align: center;
     background-color: transparent;

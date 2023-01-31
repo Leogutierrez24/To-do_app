@@ -11,6 +11,7 @@ font -> #F1F1F1
 }
 
 body {
+  height: 100vh;
   margin: 0;
   background-color: #092638;
   color: #F1F1F1;
@@ -39,4 +40,28 @@ code {
 
 button, a {
   -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(113 85 125);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media all and (min-width: 1024px) {
+  #root {
+    padding: 90px 15px 0;
+  }
 }

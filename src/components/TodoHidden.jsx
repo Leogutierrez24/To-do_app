@@ -13,7 +13,7 @@ export function TodoHidden({
         
     return(
         <section className="hidden-section">
-            <button type="button" className="hidden-button" onClick={handleHiddenSection}>show completed tasks</button>
+            <button type="button" className="hidden-button" onClick={handleHiddenSection}>{!hiddenSection ? "show" : "hide"} completed tasks</button>
             {
                 hiddenSection && <TodoList>
                                 {tasksCompleted?.map((task) => {

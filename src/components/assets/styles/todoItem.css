@@ -1,6 +1,7 @@
 .taskContainer {
     width: 100%;
     min-width: 300px;
+    max-width: 475px;
     height: fit-content;
     min-height: 80px;
     padding: 10px 0;
