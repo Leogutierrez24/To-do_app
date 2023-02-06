@@ -44,8 +44,15 @@
     padding: 0 10px;
 }
 
-.taskContent__left, .taskContent__right {
+.taskContent__left {
     width: 50px;
+}
+
+.taskContent__right {
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .checkButton, .deleteButton {
@@ -67,8 +74,9 @@
 .checkButton {
     width: 30px;
     height: 30px;
+    border: none;
     border-radius: 3px;
-    background-color: #03C988;
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,8 +85,21 @@
 .deleteButton {
     width: 22px;
     height: 22px;
+    border: none;
     border-radius: 50%;
-    background-color: #EB455F;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editButton {
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 3px;
+    background-color: transparent;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,8 +115,20 @@
     text-decoration: line-through;
 }
 
-.checkButton__icon, .deleteButton__icon {
+.checkButton__icon, .deleteButton__icon, .editButton__icon {
     filter: invert(99%) sepia(4%) saturate(117%) hue-rotate(40deg) brightness(115%) contrast(89%);
+}
+
+.checkButton__icon:hover {
+    filter: invert(60%) sepia(92%) saturate(2034%) hue-rotate(116deg) brightness(94%) contrast(98%);
+}
+
+.deleteButton__icon:hover {
+    filter: invert(40%) sepia(40%) saturate(4095%) hue-rotate(326deg) brightness(95%) contrast(93%);
+}
+
+.editButton__icon:hover {
+    filter: invert(46%) sepia(82%) saturate(823%) hue-rotate(200deg) brightness(97%) contrast(89%);
 }
 
 .checkButton__icon {
@@ -104,8 +137,13 @@
 }
 
 .deleteButton__icon {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+.editButton_icon {
+    width: 16px;
+    height: 16px;
 }
 
 .showContent {
