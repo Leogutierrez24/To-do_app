@@ -2,12 +2,26 @@ import { useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
 export function useTasks(){
-    const { item: tasks, saveItem: saveTasks, loading, error } = useLocalStorage("TASKS_V1", []);
-    const { item: completedTask, saveItem: saveCompletedTask} = useLocalStorage("CMPTASKS_V1", []);
+    const { 
+        item: tasks, 
+        error,
+        loading, 
+        saveItem: saveTask,
+        deleteItem: deleteTask,
+        updateItem: updateTask,
+        getItem: getTask,
+    } = useLocalStorage("TASKS_V1", []);
+
+    const { 
+        item: completedTask,
+        saveItem: saveCompletedTask,
+        deleteItem: deleteCompletedTask,
+        updateItem: updateCompletedTask,
+        getItem: getCompletedTask,
+    } = useLocalStorage("CMPTASKS_V1", []);
 
     const [taskValue, setTaskValue] = useState("");
 
-    const [modalStatus, setModalStatus] = useState(false);
     const [hiddenSection, setHiddenSection] = useState(false);
 
     const completedTasks = tasks.filter(task => !!task.status).length;
@@ -27,79 +41,59 @@ export function useTasks(){
         });
     }
 
-    const completeTask = (title) => {
-        let updatedTasks = [...tasks];
-        const taskIndex = updatedTasks.findIndex(task => task.title === title);
-
-        updatedTasks[taskIndex].status = true;
-        let taskCompleted = [...completedTask];
-        taskCompleted.push(updatedTasks[taskIndex]);
-        deleteTask(title);
-        saveCompletedTask(taskCompleted);
-    }
-
-    const deleteTask = (title) => {
-        let updatedTasks = [...tasks];
-        const taskIndex = updatedTasks.findIndex(task => task.title === title);
-
-        updatedTasks.splice(taskIndex, 1);
-        saveTasks(updatedTasks);
-    }
-
     const addTask = (text) => {
-        let updatedTasks = [...tasks];
-
-        updatedTasks.unshift({
+        const newTask = {
             title: text,
             status: false,
             id: Date.now()
-        });
+        };
 
-        saveTasks(updatedTasks);
+        saveTask(newTask);
     }
 
-    const resetTask = (title) => {
-        let hiddenTasks = [...completedTask];
-        const taskIndex = hiddenTasks.findIndex(task => task.title === title);
-
-        hiddenTasks[taskIndex].status = false;
-        let updatedTasks = [...tasks];
-        updatedTasks.unshift(hiddenTasks[taskIndex]);
-
-        hiddenTasks.splice(taskIndex, 1);
-        saveTasks(updatedTasks);
-        saveCompletedTask(hiddenTasks);
+    const completeTask = (id) => {
+        updateTask(id, "status", true);
+        saveCompletedTask(getTask(id));
+        deleteTask(id);
     }
 
-    const deleteCompletedTask = (title) => {
-        let hiddenTasks = [...completedTask];
-        const taskIndex = hiddenTasks.findIndex(task => task.title === title);
-
-        hiddenTasks.splice(taskIndex, 1);
-        saveCompletedTask(hiddenTasks);
+    const removeTask = (id) => {
+        deleteTask(id);
     }
 
-    const handleModal = () => setModalStatus(prevState => !prevState);
+    const editTask = (id, newText) => {
+        updateTask(id, "title", newText);
+    }
+
+    const resetTask = (id) => {
+        updateCompletedTask(id, "status", false);
+        saveTask(getCompletedTask(id));
+        deleteCompletedTask(id);
+    }
+
+    const removeCompletedTask = (id) => {
+        deleteCompletedTask(id);
+    }
 
     const handleHiddenSection = () => setHiddenSection(prevState => !prevState);
 
     return {
             totalTasks,
             completedTasks,
-            taskValue,
-            setTaskValue,
-            error,
             loading,
+            error,
+            taskValue,
             searchedTasks,
-            completeTask,
-            deleteTask,
-            handleModal,
-            modalStatus,
-            addTask,
-            handleHiddenSection,
             hiddenSection,
             tasksCompleted,
+            addTask,
+            completeTask,
+            removeTask,
             resetTask,
-            deleteCompletedTask,
+            editTask,
+            setTaskValue,
+            handleHiddenSection,
+            removeCompletedTask,
+            getTask,
         };
 }

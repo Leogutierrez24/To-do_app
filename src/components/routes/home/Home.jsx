@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { TodoCounter } from "../../TodoCounter";
 import { TodoSearch } from "../../TodoSearch";
 import { TodoList } from "../../TodoList";
@@ -6,8 +7,6 @@ import { TodoItem } from "../../TodoItem";
 import { TodoAddButton } from "../../TodoAddButton";
 import { TodoHeader } from "../../TodoHeader";
 import { TodoHidden } from "../../TodoHidden";
-import { Modal } from "../../Modal";
-import { TodoForm } from "../../TodoForm";
 import { EmptyComponent } from "../../EmptyComponent";
 import { AddNewTodo } from "../../AddNewTodo";
 import { Loader } from "../../Loader";
@@ -16,30 +15,35 @@ import { TodoFooter } from "../../TodoFooter";
 import { useTasks } from "../../hooks/useTasks";
 
 export function Home() {
+    const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams({});
+
     const {
         error,
         loading, 
         taskValue,
-        setTaskValue,
         totalTasks,
         searchedTasks, 
-        completeTask, 
-        deleteTask,
-        handleModal,
-        modalStatus,
-        handleHiddenSection, 
         hiddenSection, 
         tasksCompleted, 
+        setTaskValue,
+        completeTask, 
+        removeTask,
+        handleHiddenSection, 
         resetTask, 
-        deleteCompletedTask,
-        addTask
+        removeCompletedTask,
       } = useTasks();
 
     return (
         <>
             <TodoHeader loading={loading}>
                 <TodoCounter totalTasks={totalTasks}/>
-                <TodoSearch taskValue={taskValue} setTaskValue={setTaskValue}/>
+                <TodoSearch 
+                    taskValue={taskValue}
+                    setTaskValue={setTaskValue}
+                    searchParams={searchParams}
+                    setSearchParams={setSearchParams}
+                />
             </TodoHeader>
             <TodoBody>
                 <TodoList>
@@ -51,29 +55,26 @@ export function Home() {
                             return <TodoItem 
                                         key={todo.id} 
                                         title={todo.title}
+                                        id={todo.id}
                                         status={todo.status}
                                         onComplete={completeTask}
-                                        onDelete={deleteTask}
+                                        onDelete={removeTask}
+                                        onEdit={() => navigate(`/edit/${todo.id}`, { state: { todo } })}
                                     />})}
                 </TodoList> 
             </TodoBody>
-            <TodoAddButton handleModal={handleModal} modalStatus={modalStatus} />
+            <TodoAddButton 
+                onClick={ () => navigate("/new") }
+            />
             <TodoFooter>
                 <TodoHidden 
                     handleHiddenSection={handleHiddenSection}
                     hiddenSection={hiddenSection} 
                     tasksCompleted={tasksCompleted}
                     resetTask={resetTask}
-                    deleteCompletedTask={deleteCompletedTask}
+                    removeCompletedTask={removeCompletedTask}
                 />
             </TodoFooter>
-            {
-                modalStatus && <Modal>
-                                <div className="modal-content">
-                                <TodoForm addTask={addTask} handleModal={handleModal} />
-                                </div>
-                            </Modal>
-            }
         </>
     );
 }

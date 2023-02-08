@@ -8,21 +8,22 @@ export function TodoHidden({
         hiddenSection, 
         tasksCompleted, 
         resetTask, 
-        deleteCompletedTask
+        removeCompletedTask
     }){
         
     return(
         <section className="hidden-section">
-            <button type="button" className="hidden-button" onClick={handleHiddenSection}>{!hiddenSection ? "show" : "hide"} completed tasks</button>
+            <button type="button" className="hidden-button" onClick={handleHiddenSection}>{!hiddenSection ? "show " : "hide "}completed tasks</button>
             {
                 hiddenSection && <TodoList>
                                 {tasksCompleted?.map((task) => {
                                             return <TodoItem 
                                                 key={task.id} 
+                                                id={task.id}
                                                 title={task.title}
                                                 status={task.status}
                                                 onComplete={resetTask}
-                                                onDelete={deleteCompletedTask}
+                                                onDelete={removeCompletedTask}
                                             />})}
                                 </TodoList>                         
             }

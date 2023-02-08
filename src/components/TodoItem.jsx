@@ -8,16 +8,16 @@ import "./assets/styles/todoItem.css";
 export function TodoItem(props){
     const textRef = useRef(null);
 
-    const handleCompleteTaskBtn = () => props.onComplete(props.title);
+    const handleCompleteTaskBtn = () => props.onComplete(props.id);
 
-    const handleDeleteTaskBtn = () => props.onDelete(props.title);
+    const handleDeleteTaskBtn = () => props.onDelete(props.id);
 
-    const handleEditTaskBtn = () => null;
+    const handleEditTaskBtn = () => props.onEdit();
 
     const showContent = () => {
         textRef.current.classList.toggle("showContent");
     }
-
+    
     return(
         <li className={`taskContainer ${!props.status ? "toComplete" : "completed"}`}>
             <div className="taskContent__left">

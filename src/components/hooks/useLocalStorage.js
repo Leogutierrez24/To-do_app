@@ -22,7 +22,7 @@ export const useLocalStorage = (itemName, initialValue) => {
 
                 if(!localStorageItem){ 
                     localStorage.setItem(itemName, JSON.stringify(initialValue));
-                    parsedItem = [];
+                    parsedItem = initialValue;
                 } else parsedItem = JSON.parse(localStorageItem);
 
                 onSuccess(parsedItem);      
@@ -30,19 +30,61 @@ export const useLocalStorage = (itemName, initialValue) => {
                 onError(error);
             }
         }, 1500);
-    });
+    }, []);
 
     const saveItem = (newItem) => {
         try{
-            const stringifiedNewItem = JSON.stringify(newItem);
-            localStorage.setItem(itemName, stringifiedNewItem);
-            onSave(newItem);
+            let data = JSON.parse(localStorage.getItem(itemName));
+            data.unshift(newItem);
+            localStorage.setItem(itemName, JSON.stringify(data));
+            onSave(data);
         } catch(error){
             onError(error);
         }
     }
 
-    return { item, saveItem, loading, error };
+    const deleteItem = (id) => {
+        try {
+            let data = JSON.parse(localStorage.getItem(itemName));
+            let itemIndex = data.findIndex(item => item.id === id);
+            data.splice(itemIndex, 1);
+            localStorage.setItem(itemName, JSON.stringify(data));
+            onSave(data);
+        } catch (error) {
+            onError(error);
+        }
+    }
+
+    const updateItem = (id, prop, change) => {
+        try {
+            let data = JSON.parse(localStorage.getItem(itemName));
+            let itemIndex = data.findIndex(item => item.id === id);
+
+            if (prop === "status") data[itemIndex].status = change;
+            if (prop === "title") data[itemIndex].title = change;
+
+            localStorage.setItem(itemName, JSON.stringify(data));
+            onSave(data);
+        } catch (error) {
+            onError(error);
+        }
+    }
+
+    const getItem = (id) => {
+        let data = JSON.parse(localStorage.getItem(itemName));
+        let itemIndex = data.findIndex(item => item.id === id);
+        return data[itemIndex];
+    }
+
+    return { 
+        item, 
+        loading, 
+        error, 
+        saveItem,
+        deleteItem,
+        updateItem,
+        getItem,
+    };
 }
 
 const initialState = ({ initialValue }) => (
