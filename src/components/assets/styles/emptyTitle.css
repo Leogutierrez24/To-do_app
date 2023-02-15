@@ -1,19 +1,25 @@
-.empty-container {
+.emptyTitle-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.empty-container > h3 {
+.emptyTitle-text {
     color: #6b537a;
-    font-weight: bold;
-    text-align: center;
     letter-spacing: .3px;
+    text-align: center;
 }
 
-.empty-emoji {
+.emptyTitle-icon {
     width: 30px;
     height: 30px;
     filter: invert(37%) sepia(20%) saturate(798%) hue-rotate(233deg) brightness(87%) contrast(88%);
+}
+
+/* particular classes */
+
+.noCompletedTask {
+    font-size: 16px;
 }
