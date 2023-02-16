@@ -60,6 +60,7 @@ export function Home() {
                                         onComplete={completeTask}
                                         onDelete={removeTask}
                                         onEdit={() => navigate(`/edit/${todo.id}`, { state: { todo } })}
+                                        showEdit={true}
                                     />})}
                 </TodoList> 
             </TodoBody>

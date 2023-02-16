@@ -1,6 +1,6 @@
 .taskContainer {
     width: 100%;
-    min-width: 300px;
+    min-width: 270px;
     max-width: 475px;
     height: fit-content;
     min-height: 80px;
@@ -29,13 +29,13 @@
 }
 
 .taskContent__left {
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 .taskContent__middle { justify-content: center; }
 
 .taskContent__right { 
-    padding-right: 20px;
+    padding-right: 10px;
     justify-content: end;
 }
 

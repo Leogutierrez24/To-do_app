@@ -22,8 +22,9 @@
 
 #textInput {
     width: 85%;
+    max-width: 400px;
     height: 125px;
-    margin-bottom: 5px;
+    margin-bottom: 16px;
     border-radius: 1px;
 }
 
@@ -37,6 +38,7 @@
     border: none;
     border-radius: 2px;
     color: #F1F1F1;
+    cursor: pointer;
 }
 
 .addTask-form__btn-add {
@@ -46,4 +48,3 @@
 .addTask-form__btn-cancel {
     background-color: #EB455F;
 }
-

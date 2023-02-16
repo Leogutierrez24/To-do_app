@@ -25,6 +25,7 @@ export function TodoHidden({
                                                 status={task.status}
                                                 onComplete={resetTask}
                                                 onDelete={removeCompletedTask}
+                                                showEdit={false}
                                             />})}
                                 </TodoList> 
             }

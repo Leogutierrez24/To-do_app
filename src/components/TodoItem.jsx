@@ -32,9 +32,11 @@ export function TodoItem(props){
                 <button className="deleteButton" onClick={handleDeleteTaskBtn} type="button" title="delete task">
                     <img src={deleteIcon} alt="delete icon" className="deleteButton__icon" />
                 </button>
-                <button className="editButton" onClick={handleEditTaskBtn} type="button" title="edit task">
-                    <img src={editIcon} alt="edit icon" className="editButton__icon" />
-                </button>
+                {
+                    props.showEdit &&   <button className="editButton" onClick={handleEditTaskBtn} type="button" title="edit task">
+                                            <img src={editIcon} alt="edit icon" className="editButton__icon" />
+                                        </button>
+                }
             </div>
         </li>
     );
