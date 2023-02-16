@@ -1,10 +1,12 @@
 {
   "files": {
-    "main.css": "/todo-app/static/css/main.40467ddc.css",
-    "main.js": "/todo-app/static/js/main.d678b794.js",
+    "main.css": "/todo-app/static/css/main.a5cac843.css",
+    "main.js": "/todo-app/static/js/main.f03f1f2c.js",
     "static/media/card-checklist.svg": "/todo-app/static/media/card-checklist.8cf9b949372f01573663151056fda808.svg",
+    "static/media/journal-x.svg": "/todo-app/static/media/journal-x.db3f5328216561c83451c1f54fb299ad.svg",
     "static/media/emoji-wink.svg": "/todo-app/static/media/emoji-wink.6575763896f2e35c4df032ab96b164db.svg",
     "index.html": "/todo-app/index.html",
+    "static/media/emoji-dizzy.svg": "/todo-app/static/media/emoji-dizzy.8323f9026082ad6abb0a4280847436f8.svg",
     "static/media/pencil-fill.svg": "/todo-app/static/media/pencil-fill.4c640d95a61cb0764a8340cbe3f87cd2.svg",
     "static/media/emoji-smile.svg": "/todo-app/static/media/emoji-smile.c5288b5767f4a2899ac54af519feefac.svg",
     "static/media/arrow-counterclockwise.svg": "/todo-app/static/media/arrow-counterclockwise.48745dc8e6d9b1a2f8ec987bc9867fdf.svg",
@@ -12,11 +14,11 @@
     "static/media/x.svg": "/todo-app/static/media/x.85f9f2a1f603d5a966a44474678a7981.svg",
     "static/media/search.svg": "/todo-app/static/media/search.b1f781b99ceaafb9c831949bb54ae3cd.svg",
     "static/media/plus-lg.svg": "/todo-app/static/media/plus-lg.84478f1596d8d93aef242201a227b42b.svg",
-    "main.40467ddc.css.map": "/todo-app/static/css/main.40467ddc.css.map",
-    "main.d678b794.js.map": "/todo-app/static/js/main.d678b794.js.map"
+    "main.a5cac843.css.map": "/todo-app/static/css/main.a5cac843.css.map",
+    "main.f03f1f2c.js.map": "/todo-app/static/js/main.f03f1f2c.js.map"
   },
   "entrypoints": [
-    "static/css/main.40467ddc.css",
-    "static/js/main.d678b794.js"
+    "static/css/main.a5cac843.css",
+    "static/js/main.f03f1f2c.js"
   ]
 }
